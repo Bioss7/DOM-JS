@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript #7: управление стилями - className, style, classList, getComputedStyle</title>
+</head>
+<body>
+    <style>
+        .msg{
+            width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #20454B;
+            padding: 5px;
+            border-radius: 5px;
+            color: #eee;
+            font-size: 24px;
+        }
+
+        .message{
+            position: absolute;
+            width: 200px;
+            padding: 10px;
+            background-color: #eee;
+        }
+
+        .message.ex{
+            color: #0000CC;
+        }
+    </style>
+
+    <div class="message ex">Важная информация!</div>
+    <div style="position: absolute; top: 200px; left: 50%;">Информация</div>
+
+    <script>
+        // let elem = document.querySelector("div.msg");
+        // Получаем класс
+        // console.log(elem.className);
+        // Если хотим увидить оформление атрибута style 
+        // let elem2 = elem.nextSibling.nextSibling; 
+        // console.log(elem2.style.top);
+
+        // Меняем класс
+        // let elem = document.querySelector("div.msg");
+        // elem.className = "message";
+
+        // let elem = document.querySelector("div");
+        // elem.classList.add("ex");
+        // elem.classList.remove("ex");
+
+        // classList итерируемый объект с помощью for of 
+        // for(let cl of elem.classList){
+        //     console.log(cl);
+        // }
+
+        // let elem = document.querySelector("div");
+        // let coordY = 0;
+        // let idMove = setInterval(() => {
+        //     coordY += 5;
+        //     elem.style.top = coordY + "px";
+        // }, 50);
+        // setTimeout(() => clearInterval(idMove), (3000));
+
+        // font-size fontSize запись свойсвта 
+        // -moz-border-radius elem.style.MozBorderRadius = "5px"
+
+        // let elem = document.querySelector("div");
+        // let idMove = setInterval(function() {
+        //     if(!elem.style.display) elem.style.display = "none";
+        //     else elem.style.display = "";
+        // }, 100);
+        // setTimeout(() => clearInterval(idMove), 3000);
+
+        // let elem = document.querySelector("div");
+        // elem.style.cssText = `color: red; font-size: 18px; background-color: green`;
+
+        // Свойства elem.style не синхронизированы со свойсвами в классе!!!
+
+        // Получаем свойства элемента некоторые браузеры могут некорректно работать
+        // let elem = document.querySelector("div");
+        // let objectStyles = getComputedStyle(elem);
+        // console.log(objectStyles.width);
+    </script>
+</body>
+</html>

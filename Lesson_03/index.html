@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript #3: методы поиска элементов в DOM: querySelector, querySelectorAll, getElementById</title>
+</head>
+<body>
+    <div id="div_id">
+        <p>Текст внутри div</p>
+    </div>
+    <ul>
+        <li>Солнце</li>
+        <li>Меркурий</li>
+        <li>Венера</li>
+        <li>Земля</li>
+        <li>Марс</li>
+    </ul>
+    <ol>
+        <li>Сириус</li>
+        <li>Альдебаран</li>
+        <li>Капелла</li>
+        <li>Ригель</li>
+    </ol>
+
+    <h1>О звездах</h1>
+    <div class="content-table">
+        <ul class="stars-list">
+            <li class="star">О сириусе</li>
+            <li class="star">Об Альдебаране</li>
+            <li class="contact">Обратная связь</li>
+        </ul>
+    </div>
+
+    <h2>О ригеле</h2>
+    <script>
+        // let divElem = document.getElementById('div_id');
+        // console.log(divElem);
+
+        // Можем обратиться по ID 
+        // console.log(div_id);
+
+        // Стандарт ES6 
+        // let list = document.querySelectorAll("ul > li:first-child");
+        // for(let val of list){
+        //     console.log(val);
+        // }
+        // console.log(list[0]);
+
+        // matches имеет
+        // let list = document.querySelectorAll("ul.stars-list > li");
+        // for(let item of list){
+        //     if(item.matches("li.star")) console.log(item);
+        // }
+
+        // closest ближайший предок 
+        // let li = document.querySelector("li.star");
+        // console.log(li.closest('.stars-list'));
+        // console.log(li.closest('.content-table'));
+        // console.log(li.closest('h1')); // null 
+
+        // Устарелые методы, живая коллекция (ищет элемент даже, если он идет после поиска)
+        // let list = document.getElementsByTagName("h2");
+        // for(let item of list) console.log(item);
+
+        // Ищем дочерние элементы contains
+        // let div = document.querySelector("div.content-table");
+        // let ul = document.querySelector("ul.stars-list");
+
+        // if(div.contains(ul))
+        // console.log("ul внутри div");
+        
+    </script>
+</body>
+</html>

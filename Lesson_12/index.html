@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript #12: погружение и всплытие событий: stopPropagation, stopImmediatePropagation, eventPhase</title>
+    <style>
+        #first {background: #cc4444; width: 100px; padding: 10px;}
+        #second{background: #00cc00; padding: 10px;}
+        #third{background: #4444cc; padding: 0 10px 0 10px;}
+    </style>
+</head>
+<body>
+    <div id="first" onclick="showTag(event)">div
+        <p id="second" onclick="showTag(event)">p
+            <span id="third" onclick="showTag(event)">span</span>
+        </p>
+   </div>
+
+    <script>
+        first.addEventListener("click", showTag, true);
+        second.addEventListener("click", showTag, true);
+        third.addEventListener("click", showTag, true);
+
+        function showTag(event){
+            console.log(event.eventPhase + ": " + event.currentTarget.tagName + " от " + event.target.tagName);
+        }
+
+        // Удалить обработчки погружения 
+        first.removeEventListener("click", showTag, true);
+
+        // Событие span->p->div
+        // function showTag(event){
+        //     console.log(event.currentTarget.tagName + " от " + event.target.tagName);
+        //     event.stopPropagation();
+        // }
+    </script>
+</body>
+</html>

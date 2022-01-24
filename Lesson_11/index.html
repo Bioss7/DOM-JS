@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript #11: обработчики событий: onclick, addEventListener, removeEventListener, event</title>
+</head>
+<style>
+    input{
+        transition: width 1s;
+        width: 200px;
+    }
+
+    .expand{
+        width: 400px;
+    }
+</style>
+<body>
+    <p><a id="link" href="#" onclick="showMessage(event)">Нажми меня</a></p>
+    <!-- <p><input type="button" value="Событие onclick"></p> -->
+    <p><input type="button" onclick="this.classList.toggle('expand')" value="Событие onClick"></p>    
+
+    <script>
+        /* События Events */
+        // Пользователь кликает мышкой по HTML-странице (браузер генерирует событие onclick);
+        // Пользователь перемещает курсор мыши (браузер генерирует событие mousemove);
+        // Пользователь нажимает на клавишу клавиатуры (браузер генерирует события keydown/keyup);
+        // Когда полностью загружается HTML-документ браузер генериурет событие DOMContentLoaded.  
+
+        // let inp = document.querySelector("input");
+        // присваиваем ссылку
+        // inp.onclick = showMessage;
+        // link.onclick = showMessage;
+        // Удалить обработчик
+        // inp.onclick = null;
+
+        // Теряется контекст у анонимной функции
+
+        // function showMessage(){
+        //     // alert("Hello!");
+        //     alert(this.tagName);
+        // }
+
+        // Получаем у анонимной функции tagName
+        // let inp = document.querySelector("input");
+        // inp.onclick = showMessage;
+
+        // function showMessage(event){
+        //     alert(event.currentTarget.tagName);
+        // }
+
+        // Добавляем слушателя 
+        // let inp = document.querySelector("input");
+
+        // inp.addEventListener("click", showMessage);
+        // inp.addEventListener("click", function(event){
+        //     console.log(event.clientX, event.clientY);
+        // });
+
+        // inp.onclick = function(){
+        //     console.log("Обработчик onclick");
+        // }
+
+        // Удалить обработчик
+        // inp.removeEventListener("click", showMessage);
+
+        // function showMessage(event){
+        //     alert(event.currentTarget.tagName);
+        // }
+
+        // Событие для transition
+        // let inp = document.querySelector("input");
+        // inp.addEventListener("transitionend", showMessage);
+
+        // function showMessage(event){
+        //     alert(event.currentTarget.tagName);
+        // }
+
+        // let inp = document.querySelector("input");
+        // inp.addEventListener("transitionend", showMessage);
+
+        // function showMessage(event){
+        //     handleEvent(event){
+        //         console.log("Событие: " + event.type);
+        //     }
+        // }
+
+        // Используем класс
+        // class MyHandler{
+        //     handleEvent(event){
+        //         console.log("Событие: " + event.type);
+        //     }
+        // }
+
+        // let inp = document.querySelector("input"); 
+        // inp.addEventListener("click", new MyHandler());
+
+        // function showMessage(event){
+        //     alert(event.currentTarget.tagName);
+        // }
+    </script>
+</body>
+</html>

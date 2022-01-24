@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript #4: свойства DOM-узлов: nodeName, innerHTML, outerHTML, data, textContent, hidden</title>
+</head>
+<body><!-- комментарий --><h1>Заголовок страницы</h1>
+    <div id="comm">Text</div>
+    <script>
+        // К какому элементу относится DOM узел используем конструктор класса 
+        // console.log(document.body.constructor.name);
+        // console.log(document.body instanceof HTMLBodyElement); // true
+        // console.log(document.body instanceof HTMLElement); // true
+        // console.log(document.body instanceof Element); // true
+        // console.log(document.body instanceof Text); // false
+
+        // Выводим структуру 
+        // console.dir(document.body);
+
+        // let comm = document.body.firstChild;
+        // console.log(comm.nodeName);
+        // console.log(document.body.nodeName);
+        // tagName присутсвует только у элементов 
+        // console.log(comm.tagName);
+        // console.log(document.body.tagName);
+
+        // innerHTML
+        // let h1 = document.body.firstChild.nextSibling;
+        // console.log(h1.innerHTML);
+        // h1.innerHTML += ' Измененный <u>заголовок</u>';
+        // h1.innerHTML = h1.innerHTML + " c добавленным текстом";
+
+        // outerHTML изменяет тег
+        // let h1 = document.body.firstChild.nextSibling;
+        // h1.outerHTML = "<h2> Измененный <u>заголовок</u> из h1 в h2";
+
+        // Изменяем комментарий nodeValue и data
+        // let comm = document.body.firstChild;
+        // console.log(comm.data); 
+        // comm.data = "123";
+
+        // textContent без тегов
+        // console.log(document.body.textContent);
+
+        // let msg = prompt("Ваш комментарий: ", "");
+        // comm.textContent = msg;
+
+        // hidden скрывает элемент
+        // let comm = document.getElementById("comm");
+        // comm.hidden = true;
+        // setInterval(()=> comm.hidden = !comm.hidden, 500);
+        
+    </script>
+</body>
+</html>
