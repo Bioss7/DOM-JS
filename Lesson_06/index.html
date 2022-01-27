@@ -38,97 +38,102 @@
     </table>
 
     <script>
-        // let div = document.createElement('div');
-        // div.className = "msg";
-        // div.innerHTML = "Важная информация";
+        // Метод createElement создает элемент с указанным тегом
+        let div = document.createElement('div');
+        // className свойство для присвоения класса 
+        div.className = "msg";
+        div.innerHTML = "Важная информация";
 
-        // Добавляет в конец списка
-        // document.body.append(div);
+        // Добавляет элемент div в конец списка body
+        document.body.append(div);
 
-        // Методы вставки
+        // Методы вставки элементов
         // node.prepend - вставялет узлы или строки в начало node
         // node.before - вставляет узлы или строки до node
         // node.after - вставляет узлы или строки после node
-        // node.replaceWith - заменяет node заданными узлами или строками.
+        // node.replaceWith - заменяет node заданными узлами или строками
 
-        // let list = document.querySelector("ul");
-        // list.before('before');
-        // list.after('after');
+        let list = document.querySelector("ul");
+        list.before('before');
+        list.after('after');
 
-        // let li_1 = document.createElement('li');
-        // li_1.innerHTML = "первый элемент";
-        // list.prepend(li_1);
+        let li_1 = document.createElement('li');
+        li_1.innerHTML = "первый элемент";
+        list.prepend(li_1);
 
-        // let li_2 = document.createElement('li');
-        // li_2.innerHTML = "последний элемент";
-        // list.append(li_2);
+        let li_2 = document.createElement('li');
+        li_2.innerHTML = "последний элемент";
+        list.append(li_2);
 
-        // let list = document.querySelector('ul');
-        // list.replaceWith(document.createElement("hr"), "замена", document.createElement("br"));
+        let list = document.querySelector('ul');
+        // Заменяем содержимое заданными узлами или строками
+        list.replaceWith(document.createElement("hr"), "замена", document.createElement("br"));
 
         // Перемещаем элементы 
-        // let li = document.querySelector("ul > li:first-child");
-        // let list = document.querySelector('ul');
-        // list.append(li);
+        let li = document.querySelector("ul > li:first-child");
+        let list = document.querySelector('ul');
+        list.append(li);
 
-        // Создаем текстовые элементы
-        // let textNode = document.createTextNode('Текстовый элемент');
-        // document.body.append(textNode);
-        
-        // document.body.append("<p>text");
+        // Создаем текстовые элементы 
+        let textNode = document.createTextNode('Текстовый элемент');
+        document.body.append(textNode);
+        // Можно вставить как текст с помощью метода append
+        document.body.append("<p>text");
 
-        // Вставка HTML
-        // let list = document.querySelector("ul");
-        // list.insertAdjacentHTML("beforebegin", "<p>Список планет<p><hr>");
-        // list.insertAdjacentHTML("afterend", "<hr><p>Конец списка");
-        // list.insertAdjacentHTML("afterbegin", "<li>Солнце");
-        // list.insertAdjacentHTML("beforeend", "<li>Марс");            
+        // Вставка HTML 
+        let list = document.querySelector("ul");
+        list.insertAdjacentHTML("beforebegin", "<p>Список планет<p><hr>");
+        list.insertAdjacentHTML("afterend", "<hr><p>Конец списка");
+        list.insertAdjacentHTML("afterbegin", "<li>Солнце");
+        list.insertAdjacentHTML("beforeend", "<li>Марс");            
         
         // Вставка как текста    
-        // let list = document.querySelector("ul");
-        // list.insertAdjacentText("beforebegin", "<p>Список планет<hr>");   
-            
-        // let li = document.createElement("li");
-        // li.innerHTML = "<b>Солнце</b>";
-        // list.insertAdjacentElement("afterbegin", li);   
+        let list = document.querySelector("ul");
+        list.insertAdjacentText("beforebegin", "<p>Список планет<hr>");   
+      
+        // Создание элемента и вставка 
+        let li = document.createElement("li");
+        li.innerHTML = "<b>Солнце</b>";
+        list.insertAdjacentElement("afterbegin", li);   
 
-        // Удаляем последний пункт меню
-        // let idRemove = setInterval(function() {
-        //     let li = document.querySelector("ul.list > li:last-child");
-        //     if(li === null){
-        //         clearInterval(idRemove);
-        //         alert("Список удален");
-        //     }
-        //     else li.remove();
-        // }, 500);
+        // Удаляем пункты меню с конца списка
+        let idRemove = setInterval(function() {
+            let li = document.querySelector("ul.list > li:last-child");
+            if(li === null){
+                clearInterval(idRemove);
+                alert("Список удален");
+            }
+            else li.remove();
+        }, 500);
 
-        // Клонирование 
-        // let t = document.querySelector("table");
-        // let r = document.querySelector("table>tbody>tr:last-child");
+        // Клонирование элемента 
+        let t = document.querySelector("table");
+        let r = document.querySelector("table>tbody>tr:last-child");
+        let row = r.cloneNode(true);
+        row.firstChild.innerHTML = "Венера";
+        t.append(row);
 
-        // let row = r.cloneNode(true);
-        // row.firstChild.innerHTML = "Венера";
-        // t.append(row);
+        // DocumentFragment крайне редко используется, представляет собой минимальный объект документа, который не имеет родителя. 
+        let fr = new DocumentFragment();
+        let list  = ["Меркурий", "Венера", "Земля", "Марс"];
+        for(let p of list){
+            let item = document.createElement('li');
+            item.innerHTML = p;
+            fr.append(item);
+        }
 
-        // DocumentFragment крайне редко используется 
-        // let fr = new DocumentFragment();
-        // let list  = ["Меркурий", "Венера", "Земля", "Марс"];
-        // for(let p of list){
-        //     let item = document.createElement('li');
-        //     item.innerHTML = p;
-        //     fr.append(item);
-        // }
+        let ul = document.querySelector("ul");
+        // Вставляем созданный элемент DocumentFragment
+        ul.append(fr);
 
-        // let ul = document.querySelector("ul");
-        // ul.append(fr);
-
-        // let ul = document.querySelector("ul");
-        // let list  = ["Меркурий", "Венера", "Земля", "Марс"];
-        // for(let p of list){
-        //     let item = document.createElement('li');
-        //     item.innerHTML = p;
-        //     ul.append(item);
-        // }
+        // Без использования DocumentFragment
+        let ul = document.querySelector("ul");
+        let list  = ["Меркурий", "Венера", "Земля", "Марс"];
+        for(let p of list){
+            let item = document.createElement('li');
+            item.innerHTML = p;
+            ul.append(item);
+        }
 
         // Устаревшие методы
         // parent.appendChild(node) - добавляет элемент в конец списка дочерних элементов
@@ -136,12 +141,12 @@
         // parent.removeChild(node) - удаляет элемент node (здесь parent является родителем node)
         // parent.replaceChild(newElem, node) - заменяет дочерний элемент node на новый newElem
 
-        // Вставка фрагмента html в момент загрузки HTML-страницы 
-        // document.write(html);
+        // Вставка фрагмента html в момент загрузки HTML-страницы
+        document.write(html);
 
-        // setTimeout(function(){
-        //     document.write('<p>Строка вставленная методом write');
-        // }, 500);
+        setTimeout(function(){
+            document.write('<p>Строка вставленная методом write');
+        }, 500);
 
     </script>
 </body>

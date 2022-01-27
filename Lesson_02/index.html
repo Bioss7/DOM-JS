@@ -17,75 +17,69 @@
             <td>Один</td><td>Два<td>
         </tr>
     </table>
-<script>
-// let html = document.documentElement;
-// let body = document.body;
-// let head = document.head;
-// console.log(html, body, head);
-// ==============================
 
-// Дочерние узлы (или дети) - элементы, которые являются непосредственными детьми узла;
-// Потомки - все уэлементы, которые лежат внутри данного, включая детей, детей их детей, и т.д.
+    <script>
+        // Выбираем html, body, head
+        let html = document.documentElement;
+        let body = document.body;
+        let head = document.head;
+        console.log(html, body, head);
 
-// for(let i = 0; i < document.body.childNodes.length; i++){
-//     console.log(document.body.childNodes[i]);
-// }
-// ==============================
-//  childNodes псевдомассив отсутствуют методы массива
-//  Для перебора псевдомассива испольуем for of
+        // Дочерние узлы (или дети) - элементы, которые являются непосредственными детьми узла;
+        // Потомки - все уэлементы, которые лежат внутри данного, включая детей, детей их детей, и т.д.
+        for(let i = 0; i < document.body.childNodes.length; i++){
+            console.log(document.body.childNodes[i]);
+        }
 
-// for(let child of document.body.childNodes){
-//     console.log(child);
-// }
+        // childNodes псевдомассив отсутствуют методы массива
+        // Для перебора псевдомассива испольуем for of
+        for(let child of document.body.childNodes){
+            console.log(child);
+        }
 
-// for in используется для перебора свойств объекта, медленее работает, выбирает лишние свойства
+        // for in используется для перебора свойств объекта, медленее работает, выбирает лишние свойства
+        // Если хотим работать как с массивом 
+        let arr = Array.from(document.body.childNodes);
+        arr.forEach((elem) => console.log(elem));
 
-// Если хотим работать как с массивом 
-// let arr = Array.from(document.body.childNodes);
-// arr.forEach((elem) => console.log(elem));
-// ==============================
+        let html = document.documentElement;
+        let first = html.firstChild;
+        let last = html.lastChild;
 
-// let html = document.documentElement;
-// let first = html.firstChild;
-// let last = html.lastChild;
-// Или обратится к коллекции
-// let first = html.childNodes[0];
-// let last = html.childNodes[html.childNodes.length - 1];
-// console.log(first); // head
-// console.log(last);  // body
-// ==============================
+        // Или обратится к коллекции
+        let first = html.childNodes[0];
+        let last = html.childNodes[html.childNodes.length - 1];
+        console.log(first); // head
+        console.log(last);  // body
 
-// Проверить есть ли дочерние элементы 
-// Нельзя присвоить другие дочерние элементы 
-// let html = document.documentElement;
-// console.log(html.hasChildNodes());
+        // Проверить есть ли дочерние элементы 
+        // Нельзя присвоить другие дочерние элементы 
+        let html = document.documentElement;
+        console.log(html.hasChildNodes());
 
-// Чтобы пропустить текстовые узлы (переноса) используем children
-// let html = document.documentElement;
+        // Чтобы пропустить текстовые узлы (переноса) используем children
+        let html = document.documentElement;
+        for(let child of document.body.children){
+            console.log(child);
+        }
 
-// for(let child of document.body.children){
-//     console.log(child);
-// }
+        // Отличие от hasChildNodes и children, в том что пропускаем текстовые узлы
 
-// Отличие от hasChildNodes и children, в том что пропускаем текстовые узлы
-// ==============================
+        // Соседи - это узлы, у которых один и тот же родитель
+        // nextSibling - следующий сосед (справа);
+        // previousSibling - предыдущий сосед (слева);
+        console.log(document.head.nextSibling); // body
+        console.log(document.body.previousSibling); // head
 
-// Соседи - это узлы, у которых один и тот же родитель
-// nextSibling - следующий сосед (справа);
-// previousSibling - предыдущий сосед (слева);
-// console.log(document.head.nextSibling); // body
-// console.log(document.body.previousSibling); // head
+        // Получить родителя 
+        console.log(document.body.parentNode);
+        let html = document.documentElement;
+        console.log(html.parentNode); // document
+        console.log(html.parentElement); // null
 
-// Получить родителя 
-// console.log(document.body.parentNode);
+        // Работа с таблицей, получаем значение из строки
+        console.log(table_digs.rows[0].cells[1].innerHTML);
 
-// let html = document.documentElement;
-// console.log(html.parentNode); // document
-// console.log(html.parentElement); // null
-
-// Работа с таблицей 
-// console.log(table_digs.rows[0].cells[1].innerHTML);
-
-</script>
+    </script>
 </body>
 </html>

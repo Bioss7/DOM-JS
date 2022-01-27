@@ -8,50 +8,58 @@
 </head>
 <body><!-- комментарий --><h1>Заголовок страницы</h1>
     <div id="comm">Text</div>
+
     <script>
-        // К какому элементу относится DOM узел используем конструктор класса 
-        // console.log(document.body.constructor.name);
-        // console.log(document.body instanceof HTMLBodyElement); // true
-        // console.log(document.body instanceof HTMLElement); // true
-        // console.log(document.body instanceof Element); // true
-        // console.log(document.body instanceof Text); // false
+        // Проверяем к какому элементу относится DOM узел используем конструктор класса 
+        console.log(document.body.constructor.name);
+        console.log(document.body instanceof HTMLBodyElement); // true
+        console.log(document.body instanceof HTMLElement); // true
+        console.log(document.body instanceof Element); // true
+        console.log(document.body instanceof Text); // false
 
-        // Выводим структуру 
-        // console.dir(document.body);
+        // Выводим структуру, свойства элемента
+        console.dir(document.body);
 
-        // let comm = document.body.firstChild;
-        // console.log(comm.nodeName);
-        // console.log(document.body.nodeName);
-        // tagName присутсвует только у элементов 
-        // console.log(comm.tagName);
-        // console.log(document.body.tagName);
+        // Свойство Node.firstChild только для чтения, возвращающее первый потомок узла в древе или null, 
+        // если узел является бездетным. Если узел это документ, он возвращает первый узел в списке своих прямых детей
+        let comm = document.body.firstChild;
 
-        // innerHTML
-        // let h1 = document.body.firstChild.nextSibling;
-        // console.log(h1.innerHTML);
-        // h1.innerHTML += ' Измененный <u>заголовок</u>';
-        // h1.innerHTML = h1.innerHTML + " c добавленным текстом";
+        // Свойство Node.nodeName только для чтения, возвращающие имя текущего узла в виде строки.
+        console.log(comm.nodeName);
+        console.log(document.body.nodeName);
 
-        // outerHTML изменяет тег
-        // let h1 = document.body.firstChild.nextSibling;
-        // h1.outerHTML = "<h2> Измененный <u>заголовок</u> из h1 в h2";
+        // Возвращает HTML-тег элемента ("div", "p", "a" и т.д).
+        console.log(comm.tagName);
+        console.log(document.body.tagName);
 
-        // Изменяем комментарий nodeValue и data
-        // let comm = document.body.firstChild;
-        // console.log(comm.data); 
-        // comm.data = "123";
+        // Свойство innerHTML устанавливает или получает HTML содержимое элемента 
+        let h1 = document.body.firstChild.nextSibling;
+        console.log(h1.innerHTML);
+        h1.innerHTML += ' Измененный <u>заголовок</u>';
+        h1.innerHTML = h1.innerHTML + " c добавленным текстом";
 
-        // textContent без тегов
-        // console.log(document.body.textContent);
+        // Свойство outerHTML изменяет содержимое HTML вместе с тегом
+        let h1 = document.body.firstChild.nextSibling;
+        h1.outerHTML = "<h2> Измененный <u>заголовок</u> из h1 в h2";
 
-        // let msg = prompt("Ваш комментарий: ", "");
-        // comm.textContent = msg;
+        // Изменяем комментарий в HTML nodeValue и data
+        let comm = document.body.firstChild;
+        console.log(comm.data); 
+        comm.data = "123";
+
+        // Свойство textContent позволяет задавать или получать текстовое содержимое элемента и его потомков
+        console.log(document.body.textContent);
+
+        // Метод prompt отображает диалоговое окно с необязательным запросом на ввод текста
+        let msg = prompt("Ваш комментарий: ", "");
+        comm.textContent = msg;
 
         // hidden скрывает элемент
-        // let comm = document.getElementById("comm");
-        // comm.hidden = true;
-        // setInterval(()=> comm.hidden = !comm.hidden, 500);
-        
+        let comm = document.getElementById("comm");
+        comm.hidden = true;
+
+        // Скрываем элемент 
+        setInterval(()=> comm.hidden = !comm.hidden, 500); 
     </script>
 </body>
 </html>

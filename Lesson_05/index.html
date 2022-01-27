@@ -34,54 +34,55 @@
     </table>
 
     <script>
-        // let body = document.body;
-        // Присвоили новое свойство   
-        // body.myStyle = "color: red";
-        // body.myStyle = {
-        //     color: "red",
-        //     fontSize: 20
-        // };
+        // Получаем содержимое body
+        let body = document.body;
+        // Присваиваем новые свойства для body
+        body.myStyle = "color: red";
+        body.myStyle = {
+            color: "red",
+            fontSize: 20
+        };
 
-        // body.getFontSize = function() {
-        //     return this.myStyle.fontSize;
-        // }
-
-        // console.log(body.getFontSize());
+        // Присваиваем функцию которая возвращает размер шрифта
+        body.getFontSize = function() {
+            return this.myStyle.fontSize;
+        }
+        console.log(body.getFontSize());
 
         // Посмотреть свойства 
-        // console.dir(body);
-        
-        // let div = document.getElementById("comm");
-        // console.log(div.id);
+        console.dir(body);
+        let div = document.getElementById("comm");
+        console.log(div.id);
 
-        // let div = document.getElementById("comm");
-        // // Получаем значение атрибута
-        // console.log(div.getAttribute("deflt"));
-        // // Меняем значение атрибута
-        // div.setAttribute("deflt", "новое значение");
-        // console.log(div.getAttribute("deflt"));
+        let div = document.getElementById("comm");
+        // Получаем значение атрибута
+        console.log(div.getAttribute("deflt"));
+        // Меняем значение атрибута на новое 
+        div.setAttribute("deflt", "новое значение");
+        console.log(div.getAttribute("deflt"));
 
         // Выводим все атрибуты
-        // for(let val of div.attributes)
-        // console.log(val);
+        for(let val of div.attributes)
+        console.log(val);
 
         // let inp = document.getElementById("input");
-        // Проверяем тип атрибута
-        // console.log(typeof inp.checked);
+        // Проверяем тип атрибута с помощью typeof
+        console.log(typeof inp.checked);
 
-        // for(let cell of document.querySelectorAll('[cell-red]')){
-        //     let attr = cell.getAttribute('cell-red');
-        //     cell.style.background = attr;
-        // }  
+        // Устанавливаем атрибут для таблицы 
+        for(let cell of document.querySelectorAll('[cell-red]')){
+            let attr = cell.getAttribute('cell-red');
+            cell.style.background = attr;
+        }  
         
-        // Применяем css
-        // let flSkip = false;
-        // for(let cell of document.querySelectorAll('[data-cell-red]')) {
-        //     if(!flSkip) cell.setAttribute('data-cell-red', 'lightRed');
-        //     flSkip = !flSkip;
-        // }
+        // Устанавливаем атрибут для таблицы, по флагу
+        let flSkip = false;
+        for(let cell of document.querySelectorAll('[data-cell-red]')) {
+            if(!flSkip) cell.setAttribute('data-cell-red', 'lightRed');
+            flSkip = !flSkip;
+        }
         
-        // атрибут cell-red = cellRed
+        // Атрибут cell-red в HTML = cellRed в JS
         // Если свойство использует дефисы, то в dataset оно прописывается в верблюжьей нотации (например, data-cell-red => cellRed)
         // в остальных случаях просто используется оставшееся имя (например, data-color => color).
         let flSkip = false;

@@ -35,41 +35,42 @@
 
     <h2>О ригеле</h2>
     <script>
-        // let divElem = document.getElementById('div_id');
-        // console.log(divElem);
+        // Получаем элемент по его id
+        let divElem = document.getElementById('div_id');
+        console.log(divElem);
 
-        // Можем обратиться по ID 
-        // console.log(div_id);
+        // Можем обратиться по id напрямую не используя getElementById
+        console.log(div_id);
 
-        // Стандарт ES6 
-        // let list = document.querySelectorAll("ul > li:first-child");
-        // for(let val of list){
-        //     console.log(val);
-        // }
-        // console.log(list[0]);
+        // В стандарте ES6 появилась возможность выбирать элемент с помощью querySelectorAll  
+        let list = document.querySelectorAll("ul > li:first-child");
+        for(let val of list){
+            console.log(val);
+        }
+        console.log(list[0]);
 
-        // matches имеет
-        // let list = document.querySelectorAll("ul.stars-list > li");
-        // for(let item of list){
-        //     if(item.matches("li.star")) console.log(item);
-        // }
+        // Метод Element.matches() вернёт true или false, в зависимости от того, соответствует ли элемент указанному css-селектору
+        let list = document.querySelectorAll("ul.stars-list > li");
+        for(let item of list){
+            if(item.matches("li.star")) console.log(item);
+        }
 
-        // closest ближайший предок 
-        // let li = document.querySelector("li.star");
-        // console.log(li.closest('.stars-list'));
-        // console.log(li.closest('.content-table'));
-        // console.log(li.closest('h1')); // null 
+        // Метод Element.closest() возвращает ближайший родительский элемент (или сам элемент), 
+        // который соответствует заданному CSS-селектору или null, если таковых элементов вообще нет.
+        let li = document.querySelector("li.star");
+        console.log(li.closest('.stars-list'));
+        console.log(li.closest('.content-table'));
+        console.log(li.closest('h1')); // null 
 
-        // Устарелые методы, живая коллекция (ищет элемент даже, если он идет после поиска)
-        // let list = document.getElementsByTagName("h2");
-        // for(let item of list) console.log(item);
+        // Устарелые методы, работают с живой DOM коллекцией, живые (динамические, реагируют на изменение DOM);
+        let list = document.getElementsByTagName("h2");
+        for(let item of list) console.log(item);
 
         // Ищем дочерние элементы contains
-        // let div = document.querySelector("div.content-table");
-        // let ul = document.querySelector("ul.stars-list");
-
-        // if(div.contains(ul))
-        // console.log("ul внутри div");
+        let div = document.querySelector("div.content-table");
+        let ul = document.querySelector("ul.stars-list");
+        if(div.contains(ul))
+        console.log("ul внутри div");
         
     </script>
 </body>
