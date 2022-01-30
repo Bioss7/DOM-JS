@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript #15: события клавиатуры keydown, keyup, событие скроллинга scroll</title>
+</head>
+<body>
+    <input id="inp" style="position: fixed;" onkeydown="keyHandler(event)" onkeyup="keyHandler(event)">
+    <ul style="font-size: 20px;">
+    <li>offsetParent</li><li>offsetParent</li><li>offsetParent</li>
+    <li>offsetParent</li><li>offsetParent</li><li>offsetParent</li>
+    <li>offsetParent</li><li>offsetParent</li><li>offsetParent</li>
+    </ul>
+
+    <script>
+        // keydown - возникает при нажатии клавиши;
+        // keyup - возникает при отпускании клавиши.
+        // repeat - проверяет была ли зажата клавиша
+        // function keyHandler(event){
+        //     console.log(event.type);
+        //     console.log("repeat:" + event.repeat);
+        // }
+
+        // event.key - символ нажатой клавиши;
+        // event.code - код нажатой клавиши.
+
+        function keyHandler(event) {
+            console.log("key: " + event.key + ", code: " + event.code);
+        }
+
+        // Получаем значение прокрутки сролла 
+        window.addEventListener("scroll", function(event) {
+            inp.value = pageYOffset;
+        })
+    </script>
+</body>
+</html>
