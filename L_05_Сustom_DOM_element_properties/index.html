@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript #5: работа с нестандартными свойствами DOM-элементов: getAttribute, setAttribute, dataset</title>
+</head>
+<style>
+    td[data-cell-red="#CC0000"]{
+        background: #CC0000;
+    }
+    td[data-cell-red="lightRed"]{
+        background: #FF9999;
+    }
+</style>
+<body>
+    <div id="comm" deflt="значение">Сообщение от пользователей</div>
+    <input id="input" type="checkbox" checked>checkbox
+
+    <table>
+        <tr>
+            <td data-cell-red="#CC0000">1</td>
+            <td data-cell-blue="#0000CC">2</td>
+            <td data-cell-red="#CC0000">3</td>
+            <td data-cell-blue="#0000CC">4</td>
+        </tr>
+        <tr>
+            <td data-cell-blue="#CC0000">5</td>
+            <td data-cell-red="#CC0000">6</td>
+            <td data-cell-blue="#CC0000">7</td>
+            <td data-cell-red="#CC0000">8</td>
+        </tr>
+    </table>
+
+    <script src="/L_05_Сustom_DOM_element_properties/example_01.js"></script>
+    <!-- <script src="/L_05_Сustom_DOM_element_properties/example_02.js"></script> -->
+    <!-- <script src="/L_05_Сustom_DOM_element_properties/example_03.js"></script> -->
+    <!-- <script src="/L_05_Сustom_DOM_element_properties/example_04.js"></script> -->
+    <!-- <script src="/L_05_Сustom_DOM_element_properties/example_05.js"></script> -->
+</body>
+</html>

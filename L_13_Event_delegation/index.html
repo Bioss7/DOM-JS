@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript #13: делегирование событий, отмена действия браузера по умолчанию - preventDefault</title>
+    <style>
+        #main_menu{
+            margin: 10px;
+            padding: 0;
+            list-style-type: none;
+            font-size: 24px;
+            width: 200px;
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+        #main_menu li{
+            margin-bottom: 10px; padding: 5px;
+        }
+        #main_menu li:hover{
+            background: #ff4ef5;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Делегирование событий</h1>
+    <p><a href="ex1.html" data-toggle-id="main_menu">Показать \ скрыть меню</a></p>
+    <p><input type="button" data-toggle-id="main_menu" value="Показать / скрыть меню"></p>
+    
+    <ul id="main_menu">
+        <li data-command="open">Открыть</li>
+        <li data-command="save">Сохранить</li>
+        <li data-command="draw">Рисовать</li>
+        <li data-command="edit">Редактировать</li>
+        <li data-command="customize">Настройки</li>
+    </ul>
+
+    <script src="/L_13_Event_delegation/example_01.js"></script>
+    <script src="/L_13_Event_delegation/example_02.js"></script>
+    <script src="/L_13_Event_delegation/example_03.js"></script>
+    <script src="/L_13_Event_delegation/example_04.js"></script>
+    
+</body>
+</html>

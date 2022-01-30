@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript #11: обработчики событий: onclick, addEventListener, removeEventListener, event</title>
+</head>
+<style>
+    input{
+        transition: width 1s;
+        width: 200px;
+    }
+
+    .expand{
+        width: 400px;
+    }
+</style>
+<body>
+    <p><a id="link" href="#" onclick="showMessage(event)">Нажми меня</a></p>
+    <!-- <p><input type="button" value="Событие onclick"></p> -->
+    <p><input type="button" onclick="this.classList.toggle('expand')" value="Событие onClick"></p>    
+
+    <script src="/L_11_Event_handlers/example_01.js"></script>
+    <script src="/L_11_Event_handlers/example_02.js"></script>
+    <script src="/L_11_Event_handlers/example_03.js"></script>
+    <script src="/L_11_Event_handlers/example_04.js"></script>
+    <script src="/L_11_Event_handlers/example_05.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript #2: навигация по DOM - parentNode, nextSibling, previousSibling, childNodes</title>
+</head>
+<body>
+    <p>Абзац</p>
+    <ul>
+        <li><b>Элемент списка</b></li>
+    </ul>
+
+    <table id="table_digs">
+        <tr>
+            <td>Один</td><td>Два<td>
+        </tr>
+    </table>
+
+    <script>
+        // Выбираем DOM элементы html, body, head
+        let html = document.documentElement;
+        let body = document.body;
+        let head = document.head;
+        console.log(html, body, head);
+
+        // Дочерние узлы (или дети) - элементы, которые являются непосредственными детьми узла;
+        // Потомки - все уэлементы, которые лежат внутри данного, включая детей, детей их детей, и т.д.
+        for(let i = 0; i < document.body.childNodes.length; i++){
+            console.log(document.body.childNodes[i]);
+        }
+
+        // childNodes псевдомассив отсутствуют методы массива
+        // Для перебора псевдомассива испольуем for of
+        for(let child of document.body.childNodes){
+            console.log(child);
+        }
+
+        // for in используется для перебора свойств объекта, медленее работает, выбирает лишние свойства
+        // Если хотим работать как с массивом 
+        let arr = Array.from(document.body.childNodes);
+        arr.forEach((elem) => console.log(elem));
+
+        let html = document.documentElement;
+        let first = html.firstChild;
+        let last = html.lastChild;
+
+        // Или обратится к коллекции
+        let first = html.childNodes[0];
+        let last = html.childNodes[html.childNodes.length - 1];
+        console.log(first); // head
+        console.log(last);  // body
+
+        // Проверить есть ли дочерние элементы 
+        // Нельзя присвоить другие дочерние элементы 
+        let html = document.documentElement;
+        console.log(html.hasChildNodes());
+
+        // Чтобы пропустить текстовые узлы (переноса) используем children
+        let html = document.documentElement;
+        for(let child of document.body.children){
+            console.log(child);
+        }
+
+        // Отличие hasChildNodes от children, в том что пропускаем текстовые узлы
+
+        // Соседи - это узлы, у которых один и тот же родитель
+        // nextSibling - следующий сосед (справа);
+        // previousSibling - предыдущий сосед (слева);
+        console.log(document.head.nextSibling); // body
+        console.log(document.body.previousSibling); // head
+
+        // Получить родителя 
+        console.log(document.body.parentNode);
+        let html = document.documentElement;
+        console.log(html.parentNode); // document
+        console.log(html.parentElement); // null
+
+        // Работа с таблицей, получаем значение из строки
+        console.log(table_digs.rows[0].cells[1].innerHTML);
+
+    </script>
+</body>
+</html>
