@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript #17: фокусировка - focus, blur, focusin, focusout, tabindex, activeElement</title>
+    <style>
+        .error{background: #CC0000;}
+    </style>
+</head>
+<body>
+    <div id="block" style="height: 50px; background: #777;"></div>
+    <form name="reg" action="">
+        <p><input name="user" value="123"/></p> 
+        <p><input name="sex" type="radio" checked/>M
+         <input name="sex" type="radio"/>Ж </p>  
+        <p>Город: <select name="city" multiple>
+            <option value="Москва">Москва</option>
+            <option value="Томск">Томск</option>
+            <option value="Барнаул">Барнаул</option>
+            </select>
+        </p>
+        <fieldset name="info">
+        <p>Согласие <input name="agree" type="checkbox"/></p>
+        <p><textarea name="about" id="" cols="30" rows="10">О себе</textarea></p>
+         </fieldset>
+        <p><input type="submit" name="submit"></p>
+        
+     </form>
+    
+    <script>
+        // Получение текущего элемента с фокусировкой 
+        let active = document.activeElement;
+        console.log(active);
+
+        // Включаем фокусировку у div прописывая tabindex="1" (по умолчанию нету)
+        // tabindex = 0 располагает элемент на уровне с другими элементами без атрибута tabinex, но обладающих фокусировкой.
+        // tabinex = -1 позволяет фокусироваться на элементе только программно.
+        block.tabIndex = 1;
+        block.onfocus = function(event) {
+            console.log("focus");
+        }
+        block.onblur = function(event) {
+            console.log("blur");
+        }
+    </script>
+    <!-- <script src="example_01.js"></script> -->
+    <!-- <script src="example_02.js"></script> -->
+    <script src="example_03.js"></script>
+</body>
+</html>
