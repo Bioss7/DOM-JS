@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p>Согласие <input name="agree" type="checkbox"/></p>
+    <p><textarea name="about" id="" cols="30" rows="10">О себе</textarea></p>
+        </fieldset>
+    <p><input type="submit" name="submit"></p>
+    <p onclick="sendForm()">Отправить форму</p>
+
+    <script>
+        let frm = document.forms[0];
+
+        // Создаем форму и отправляем её
+        function sendForm() {
+            let form = document.createElement('form');
+            form.method = 'GET';
+            form.innerHTML = '<input name="q" value="test">';
+            document.body.append(form);
+            form.submit(); // Только для формы созданной в скрипте 
+        }
+    </script>
+</body>
+</html>

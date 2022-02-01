@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript #18: события change, input, cut, copy, paste, submit элементов input и select</title>
+</head>
+<body>
+    <form name="reg" action="">
+        <p><input name="user" value="123"/></p> 
+        <p><input name="sex" type="radio" checked/>M
+        <input name="sex" type="radio"/>Ж </p>  
+        <p>Город: <select name="city" multiple>
+            <option value="Москва">Москва</option>
+            <option value="Томск">Томск</option>
+            <option value="Барнаул">Барнаул</option>
+            </select>
+        </p>
+        <fieldset name="info">
+        <p>Согласие <input name="agree" type="checkbox"/></p>
+        <p><textarea name="about" id="" cols="30" rows="10">О себе</textarea></p>
+         </fieldset>
+        <p><input type="submit" name="submit"></p>
+        <p onclick="sendForm()">Отправить форму</p>
+     </form>
+
+     <!-- <script src="/L_17_Events_input_select/example_01.js"></script> -->
+     <!-- <script src="/L_17_Events_input_select/example_02.js"></script> -->
+     <!-- <script src="/L_17_Events_input_select/example_03.js"></script> -->
+     <script src="/L_17_Events_input_select/example_04.js"></script>
+</body>
+</html>
