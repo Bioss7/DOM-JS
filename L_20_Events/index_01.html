@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript #20: события load, error; атрибуты async, defer тега script</title>
+</head>
+<body>
+   <img id="image" src="/L_20_Events/img/cat.jpg" alt=""> 
+
+   <script>
+        // У элементов которых есть (img, script) src есть событие load 
+        image.onload = function(event) {
+            console.log(`Изображение: ${image.offsetWidth}x${image.offsetHeight}`);
+        }
+
+        image.onerror = () => console.log("error load image");
+
+        // Можно создать скрипт
+        let script = document.createElement('script');
+        script.src = "/L_20_Events/example_01.js";
+        script.onerror = execute_error;
+        script.onload = execute;
+        document.head.append(script);
+
+        function execute() {
+            // console.log("скрипт загружен");
+            __fromJS();
+        }
+
+        function execute_error() {
+            console.log("Ошибка при загрузке ресурса");
+        }
+   </script>
+   
+   <!-- Как только скрипт был загружен, сработало событие onload-->
+   <!-- <script src="/L_20_Events/example_01.js" onload="execute()"></script> -->
+</body>
+</html>

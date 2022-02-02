@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript #20: события load, error; атрибуты async, defer тега script</title>
+</head>
+<body>
+    <!-- Скрипты будут выполняться в порядке в котором записаны в HTML документе -->
+    <!-- <script defer src="http://funnyballs.ru/long_script.js"></script>
+    <script defer src="example_01.js"></script> -->
+    <!-- async загружает скрипты независимо от других скриптов и от события DOMContentLoaded -->
+    <script async src="http://funnyballs.ru/long_script.js"></script>
+    <script async src="example_01.js"></script>
+    <p>Текст до скрипта
+    </p>Текст после скрипта
+    <!-- Событие сработает после загрузки скрипта -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            console.log("DOMContentLoaded");
+        });
+    </script>
+
+    <!-- Создавая скрипт через createElement он запускается в асинхронном режиме -->
+    <script>
+        let script = document.createElement('script');
+        script.src = "/L_20_Events/example_01.js";
+        script.onload = execute;
+        document.head.append(script);
+    </script>
+</body>
+</html>
