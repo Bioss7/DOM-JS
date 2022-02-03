@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/L_21_Image_preload/style.css">
+    <script type="text/javascript" src="/L_21_Image_preload/ex_1.js"></script>
+    <title>JavaScript #21: пример предзагрузки изображений с помощью javascript</title>
+</head>
+<body>
+    <div id="load_game" class="load_data" style="display: block;"></div>
+    Загрузка...
+    <div class="progress"><div id="load_status" class="value"></div></div>
+
+    <script>
+        let loader = null;
+        document.body.onload = ready; // Вешаем обработчик на событие onload
+
+        function ready(event) {
+            loader = new LoadingImages(); // Присваиваем ссылку на объект LoadingImages
+            loader.addItem("/L_21_Image_preload/img/icon1.png");
+            loader.addItem("/L_21_Image_preload/img/icon2.png");
+            loader.addItem("/L_21_Image_preload/img/icon3.png");
+            loader.addItem("/L_21_Image_preload/img/icon4.png");
+            loader.addItem("/L_21_Image_preload/img/icon4.png"); // Одинаковый URL 
+
+            let progress = document.getElementById("load_status"); 
+            let nTotal = loader.getTotalItems(); // Общее количество изображений 
+            let nCount = 0; // Количество загруженных изображений 
+            loader.load(function(){ // Вызываем метод load и передаем callback анонимную функцию 
+                nCount++;
+                progress.style.width = nCount/nTotal*100 + "%";
+                console.log(nCount);
+                if(nCount == nTotal) finishLoading();
+            })
+        }
+
+        function finishLoading(){
+            if(loader == null) return;
+
+            for(let img of loader.listImages)
+                document.body.append(img);
+        }
+    </script>
+</body>
+</html>
