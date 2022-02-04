@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/L_22_Arkanoid_game/style.css">
+    <title>JavaScript #22: пример создания начала игры арканоид</title>
+</head>
+<body>
+    <div id="leftWall"></div>
+    <div id="topWall"></div>
+    <div id="bottomWall"></div>
+    <div id="ball"></div>
+    <div id="bita"></div>
+
+    <script>
+        // Диапазон в котором может перемещаться мячик 
+        let TOP = topWall.getBoundingClientRect().height;
+        let BOTTOM = leftWall.getBoundingClientRect().height - bottomWall.getBoundingClientRect().height;
+        let RIGHT = topWall.getBoundingClientRect().width;
+        let LEFT = leftWall.getBoundingClientRect().width;
+
+        // Вешаем обработчик чтобы могли перемещать биту
+        document.addEventListener("keydown", moveBita);
+
+        let vx = 5, vy = 5; // Скорость мяча
+        let ballStyle = ball.getBoundingClientRect(); // Берем стили мяча
+        let BW = ballStyle.width/2; // Определяем радиус мяча
+        let posX = ballStyle.left+BW, posY = ballStyle.top+BW; // Начальная позиция мяча
+
+        // Вспомогательные переменные для биты
+        let bStyle = bita.getBoundingClientRect();
+        let WBITA = bStyle.width; // Высота биты
+        let HBITA = bStyle.height; // Ширина биты
+        let posBitaY = bStyle.top; // Текущая позиция биты
+        let vBita = 20; // Скорость перемещения биты
+
+        let idGo = setInterval(go, 1000/50); // Запускаем интервал который будет срабатывать 50 раз в секунду
+
+        // Логика полета мяча
+        function go(){ 
+            let stBita = bita.getBoundingClientRect(); // Текущие координаты биты
+            posX += vx; // Позиции для мяча
+            posY += vy;
+            if(posX-BW < LEFT) {posX = LEFT+BW; vx = -vx;} // Проверяем столкновение мяча с границами и меняем скорость мяча в противоположную
+            if(posY-BW < TOP) {posY = TOP + BW; vy = -vy;}
+            if(posY+BW > BOTTOM) {posY = BOTTOM-BW; vy = -vy;}
+
+            // Проверяем столкнулся ли мяч с битой 
+            if(posX+BW > RIGHT-WBITA){
+                if(posY >= stBita.top && posY <= stBita.top+stBita.height){
+                    posX = RIGHT-WBITA-BW;
+                    vx = -vx;
+                }
+            }
+
+            // Расположение мяча
+            ball.style.top = posY + "px";
+            ball.style.left = posX + "px";
+
+            // Проверка вышел мяч за пределы правой границы
+            if(posX+BW > RIGHT){
+                clearInterval(idGo);
+                document.removeEventListener("keydown", moveBita);
+                console.log("вы проиграли");
+            }
+        }
+
+        // Движение биты 
+        function moveBita(event){
+            if(event.keyCode == 38) posBitaY -= vBita;
+            if(event.keyCode == 40) posBitaY += vBita;
+            if(posBitaY < TOP) posBitaY = TOP;
+            if(posBitaY + HBITA > BOTTOM) posBitaY = BOTTOM-HBITA;
+            bita.style.top = posBitaY+"px";
+        }
+    </script>
+</body>
+</html>
